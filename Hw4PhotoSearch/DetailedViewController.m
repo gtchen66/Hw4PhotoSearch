@@ -7,6 +7,7 @@
 //
 
 #import "DetailedViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DetailedViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *detailedImage;
@@ -33,10 +34,13 @@
 //    NSURL *detailUrl = [NSURL URLWithString:[self.imageResults[indexPath.item] valueForKeyPath:@"url"]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    [defaults setURL:detailUrl forKey:@"detailUrl"];
-    NSURL *detailURL = [defaults URLForKey:@"detailUrl"];
+//    NSURL *detailURL = [defaults URLForKey:@"detailUrl"];
     
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL:detailURL];
-    self.detailedImage.image = [UIImage imageWithData:imageData];
+    // let AFNetworking run this in the background.
+    [self.detailedImage setImageWithURL:[defaults URLForKey:@"detailUrl"]];
+    
+//    NSData *imageData = [[NSData alloc] initWithContentsOfURL:detailURL];
+//    self.detailedImage.image = [UIImage imageWithData:imageData];
     
     
 }

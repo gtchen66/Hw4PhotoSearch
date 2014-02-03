@@ -39,9 +39,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    //    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController setTitle:@"hello"];
+ //   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+//    self.navigationController.navigationBar.translucent = NO;
+//    [self.navigationController setTitle:@"hello"];
+    
+ //   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     
     NSString *version = [[UIDevice currentDevice] systemVersion];
     NSLog(@"Version is %@.", version);
@@ -81,8 +83,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"PhotoCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    const int IMAGE_TAG = 100;
+
+    const int IMAGE_TAG = 2;
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:IMAGE_TAG];
     
     imageView.image = nil;
@@ -96,7 +98,7 @@
     CGSize retval;
     float x = [[self.imageResults[indexPath.item] valueForKeyPath:@"tbWidth"] floatValue];
     float y = [[self.imageResults[indexPath.item] valueForKeyPath:@"tbHeight"] floatValue];
-    retval = CGSizeMake(x+5,y+5);
+    retval = CGSizeMake(x+2,y+2);
     NSLog(@"for item %d, set x,y to %.1f,%.1f",indexPath.item, x, y);
     return retval;
 }
